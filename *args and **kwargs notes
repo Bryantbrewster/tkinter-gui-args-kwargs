@@ -1,0 +1,86 @@
+# Default values
+
+def my_function (a=1, b=2, c=3):
+    # do this with a
+    # then do this with b
+    # finally, do this with c
+
+# Because default values have been set, you could provide zero inputs for this function, and 1/2/3/ 
+# will act as the default values, unless specified otherwise. If needed, I can have some default values,
+# and some needing input by the user. Example:
+def_my function(a, b=2, c=3)
+    # do this with a
+    # then do this with b
+    # finally, do this with c
+# this would require the user to input something for 'a' when calling the function, with the option
+# of also inputting new values for b and c
+
+
+If I want to change certain values so
+# the default is not used, I could do something like:
+
+my_function(a=3, b=6)
+# this would just change the a and b values, and use the default c value
+
+
+
+# *args: many positional arguments 
+# by using *args when defining a function, I can allow the user to use as many inputs arguments
+# as they want. They could use 1, 2, 3, or 10 arguments, as long as the function is set up in some way
+# to support the use of all those arguments. For example, if I wanted a function that would take
+# all of the numbers the user wants (using *args), add them up, and return the total. Example:
+
+def add(*args):
+    total = 0
+    for arg in args:
+        total += arg
+    return total
+print(add(3, 5, 6, 8, 10))
+
+FYI: *args collects all of the arguments and puts them into a tuple
+
+# **kwargs (stands for key word arguments)
+# this allows us to use keywords, and have unlimited arguments for them. Example:
+
+def calculate(**kwargs):
+    print(kwargs)
+    
+calculate(add=3, multiply=5)
+# this prints {'add': 3, 'multiply': 5}, as the arguments are put into a dictionary. Remember, if I
+# want to loop through a kwargs, I'll need to use 'key, value in kwargs.items():'
+
+
+# creating a class with **kwargs example:
+class Car
+    def __init__(self, **kwargs):
+        self.make = kwargs["make"]
+        self.model = kwargs["model"]
+        
+# the self.make will make it so when a class is created, the value for the object's
+# make will be whatever the value is under kwargs["make"] (remember it goes in as key:value) in kwargs)
+
+my_car = Car(make="Nissan", model="GT-R")
+print(my_car.make) --------> prints Nissan
+
+# this method will fail if I don't initialize one of the arguments, such as self.model. To get around
+# this, instead of the square bracket method I can use .get(). Example:
+#     self.model = kwargs.get("model")
+# in this scenario, if model is left blank when creating the object, it will just return 'None' for 
+# self.model, instead of an error message. This makes them really optional.
+
+# Ideally the Class creation would look something like this:
+class Car
+    def __init__(self, **kwargs):
+        self.make = kwargs.get("make")
+        self.model = kwargs.get("model")
+        
+# Then I could do:
+my_car = Car(make="Nissan")
+# and it wouldn't error out
+
+
+
+
+
+
+
