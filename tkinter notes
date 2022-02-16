@@ -1,0 +1,60 @@
+from tkinter import *
+
+def button_clicked():
+    print("I got clicked")
+    # input.get() grabs the value from the input box, and returns it as a string
+    # this particular 2 functions below will turn the label's text into whatever is
+    # in the input box at the time
+    input_word = input.get()
+    my_label.config(text=input_word)
+
+
+window = Tk()
+window.title("My First GUI Program")
+window.minsize(width=500, height=300)
+# this will add padding around the edge of the window, so the widgets are more inward
+window.config(padx=20, pady=20)
+
+# Label
+# Labels on their own won't appear, I need to use .pack() to get it to show up, if I don't
+# enter a specific argument, it will default to placing the label at the top
+my_label = Label(text="I am a label", font=('Arial', 24, 'bold'))
+my_label.config(text='sup')
+my_label.grid(column=0, row=0)
+# adds padding between my_label and other widgets
+my_label.config(padx=50, pady=50)
+
+
+# Entry (input field in tkinter)
+input = Entry(width=10)
+input.grid(column=4, row=2)
+
+# Button
+button = Button(text="click here", command=button_clicked)
+button.grid(column=1, row=1)
+
+# New Button
+button2 = Button(text="New Button")
+button2.grid(column=3, row=0)
+
+
+# pack just packs all of the widgets on the screen next to each other,
+# starting from the top by default (or I can do side='left', or something)
+
+# place is better for doing the exact positioning of widgets
+# with place, you can specify x and y values
+# my_label.place(x=0, y=0) <---- label goes into top left corner on tkinter
+
+# grid, as a layout, is easier to manage if I have a lot of widgets
+# with grid, I specify the columns/rows I want the widget in
+# my_label.grid(column=0, row=0) <--- goes into top left
+# the grids are relative to each other, so it's best to start with what I want in the
+# top left (or at least furthest top left) and go from there, making that column 1, and then
+# my next widgets will be placed rlative to that, column 2/3/4, etc.
+# FYI you cannot mix pack and grid
+
+
+
+
+window.mainloop()
+
